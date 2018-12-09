@@ -1,7 +1,6 @@
 package com.springit.model;
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,14 +10,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@NoArgsConstructor//public constructor
-@Data//getter/setters/etc..
+@NoArgsConstructor
+@Getter @Setter
+@ToString
+@RequiredArgsConstructor
 public class Link extends Auditable{
 
     @Id
     @GeneratedValue
     private Long id;
+    @NonNull
     private String title;
+    @NonNull
     private String url;
 
     @OneToMany(mappedBy = "link")
